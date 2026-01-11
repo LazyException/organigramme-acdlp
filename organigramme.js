@@ -3,6 +3,7 @@ const polePerimeters = {
     "Conseil": {
         responsible: null,
         tasks: [
+            "Réunit tous les responsables de pôles et d'autres membres élus, 1 fois par mois",
             "Relation avec le référent religieux Direction",
             "Document pour des organismes (habilitation)",
             "Outils (dashboard, centrale)",
@@ -531,6 +532,16 @@ function diagonal(s, d) {
 
 // Initialisation
 update(root);
+
+// Centrage initial sur le nœud racine (Conseil)
+const initialScale = 1;
+const initialTransform = d3.zoomIdentity
+    .translate(containerWidth / 2, margin.top)
+    .scale(initialScale);
+
+svg.transition()
+    .duration(750)
+    .call(zoomBehavior.transform, initialTransform);
 
 // Boutons de contrôle du zoom
 d3.select("#zoom-in").on("click", () => {

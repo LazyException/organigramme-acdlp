@@ -4,12 +4,7 @@ const polePerimeters = {
         responsible: null,
         tasks: [
             "Réunit tous les responsables de pôles et d'autres membres élus, 1 fois par mois",
-            "Relation avec le référent religieux Direction",
-            "Document pour des organismes (habilitation)",
-            "Outils (dashboard, centrale)",
-            "Niger",
-            "Aid Adha",
-            "Envoi fond au Niger"
+            "Relation avec le référent religieux Direction"
         ],
         processes: [
             "Process de remontée des sujets au Conseil",

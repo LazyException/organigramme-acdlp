@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organigramme - Structure Organisationnelle</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <img src="logo.png" alt="ACDLP Logo" class="logo">
+            <div class="header-text">
+                <h1>Au Coeur De La Précarité</h1>
+                <p class="header-subtitle">Organigramme de l'association</p>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="zoom-in" class="control-btn" title="Zoom avant">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button id="zoom-out" class="control-btn" title="Zoom arrière">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button id="zoom-reset" class="control-btn" title="Réinitialiser">
+                <i class="fas fa-home"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="organigramme"></div>
+    </div>
+
+    <div class="legend">
+        <h3><i class="fas fa-info-circle"></i> Légende</h3>
+        <div class="legend-grid">
+            <div class="legend-item">
+                <div class="legend-badge conseil-badge">C</div>
+                <span>Conseil</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-badge support-badge">S</div>
+                <span>Pôle Support</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-badge operational-badge">O</div>
+                <span>Pôle Opérationnel</span>
+            </div>
+        </div>
+        <div class="legend-colors">
+            <div class="legend-item">
+                <div class="legend-box conseil"></div>
+                <span>Conseil (Rouge)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box support"></div>
+                <span>Support (Noir)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box operational"></div>
+                <span>Opérationnel (Rouge)</span>
+            </div>
+        </div>
+        <div class="legend-info">
+            <p><i class="fas fa-mouse-pointer"></i> Cliquez sur un pôle pour voir son périmètre</p>
+            <p><i class="fas fa-search-plus"></i> Utilisez la molette pour zoomer</p>
+        </div>
+    </div>
+
+    <!-- Panel latéral -->
+    <div id="side-panel" class="side-panel">
+        <div class="panel-header">
+            <h2 id="panel-title"></h2>
+            <button id="close-panel" class="close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="panel-content" id="panel-content">
+            <!-- Le contenu sera injecté dynamiquement -->
+        </div>
+    </div>
+
+    <!-- Overlay pour fermer le panel -->
+    <div id="panel-overlay" class="panel-overlay"></div>
+
+    <script src="organigramme.js"></script>
+</body>
+</html>

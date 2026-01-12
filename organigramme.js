@@ -342,95 +342,87 @@ const treeData = {
                     type: "directeur",
                     children: [
                         {
-                            name: "Conseil",
-                            title: "Responsables de pôles bénévoles",
-                            subtitle: "Arbitrage / Priorisation",
-                            type: "conseil",
-                            children: [
-        {
-            name: "Pôle Logistique",
-            title: "Support",
-            responsible: "Abdallah EL YOUSFI",
-            type: "support"
-        },
-        {
-            name: "Pôle Trésorerie",
-            title: "Finance",
-            subtitle: "Support",
-            responsible: "Shazad GHULAM",
-            type: "support"
-        },
-        {
-            name: "Pôle Zakat",
-            title: "Support",
-            responsible: "Rachid BOULSANE (Interim)",
-            type: "support",
-            isNew: true
-        },
-        {
-            name: "Pôle Communication",
-            title: "Support",
-            responsible: "Bilal DESTOUCHES",
-            type: "support"
-        },
-        {
-            name: "Pôle RH",
-            title: "Ressources Humaines",
-            subtitle: "Support",
-            responsible: "Umaran RANA (Interim)",
-            type: "support"
-        },
-        {
-            name: "Pôle DSI",
-            title: "Système d'Information",
-            subtitle: "Support",
-            responsible: "Rachid BOULSANE (Interim)",
-            type: "support",
-            isNew: true
-        },
-        {
-            name: "Pôle Collecte",
-            title: "Opérationnel",
-            responsible: "Yassine MELHAF (Interim)",
-            type: "operational",
-            isNew: true
-        },
-        {
-            name: "Pôle Production",
-            title: "Alimentaire",
-            subtitle: "Opérationnel",
-            responsible: "Yassine MELHAF",
-            type: "operational",
-            isNew: true
-        },
-        {
-            name: "Pôle Maraudes",
-            title: "13 équipes",
-            subtitle: "Opérationnel",
-            responsible: "Rachid BOULSANE (Interim)",
-            type: "operational",
-            isNew: true
-        },
-        {
-            name: "Pôle Social",
-            title: "Opérationnel",
-            responsible: "Umaran RANA",
-            type: "operational"
-        },
-        {
-            name: "Pôle Vestimentaire",
-            title: "Opérationnel",
-            responsible: "Yassine FATHI",
-            type: "operational"
-        },
-        {
-            name: "Pôle Inter Asso",
-            title: "Opérationnel",
-            responsible: "Bilal DESTOUCHES (Interim)",
-            type: "operational",
-            isNew: true
-        }
-                            ]
+                            name: "Pôle Logistique",
+                            title: "Support",
+                            responsible: "Abdallah EL YOUSFI",
+                            type: "pole"
+                        },
+                        {
+                            name: "Pôle Trésorerie",
+                            title: "Finance",
+                            subtitle: "Support",
+                            responsible: "Shazad GHULAM",
+                            type: "pole"
+                        },
+                        {
+                            name: "Pôle Zakat",
+                            title: "Support",
+                            responsible: "Rachid BOULSANE (Interim)",
+                            type: "pole",
+                            isNew: true
+                        },
+                        {
+                            name: "Pôle Communication",
+                            title: "Support",
+                            responsible: "Bilal DESTOUCHES",
+                            type: "pole"
+                        },
+                        {
+                            name: "Pôle RH",
+                            title: "Ressources Humaines",
+                            subtitle: "Support",
+                            responsible: "Umaran RANA (Interim)",
+                            type: "pole"
+                        },
+                        {
+                            name: "Pôle DSI",
+                            title: "Système d'Information",
+                            subtitle: "Support",
+                            responsible: "Rachid BOULSANE (Interim)",
+                            type: "pole",
+                            isNew: true
+                        },
+                        {
+                            name: "Pôle Collecte",
+                            title: "Opérationnel",
+                            responsible: "Yassine MELHAF (Interim)",
+                            type: "pole",
+                            isNew: true
+                        },
+                        {
+                            name: "Pôle Production",
+                            title: "Alimentaire",
+                            subtitle: "Opérationnel",
+                            responsible: "Yassine MELHAF",
+                            type: "pole",
+                            isNew: true
+                        },
+                        {
+                            name: "Pôle Maraudes",
+                            title: "13 équipes",
+                            subtitle: "Opérationnel",
+                            responsible: "Rachid BOULSANE (Interim)",
+                            type: "pole",
+                            isNew: true
+                        },
+                        {
+                            name: "Pôle Social",
+                            title: "Opérationnel",
+                            responsible: "Umaran RANA",
+                            type: "pole"
+                        },
+                        {
+                            name: "Pôle Vestimentaire",
+                            title: "Opérationnel",
+                            responsible: "Yassine FATHI",
+                            type: "pole"
+                        },
+                        {
+                            name: "Pôle Inter Asso",
+                            title: "Opérationnel",
+                            responsible: "Bilal DESTOUCHES (Interim)",
+                            type: "pole",
+                            isNew: true
                         }
                     ]
                 }
@@ -485,7 +477,7 @@ root.x0 = 0;
 root.y0 = 0;
 
 // Fonction pour obtenir la couleur selon le type
-function getNodeColor(type) {
+function getNodeColor(type, subtitle, title) {
     const colors = {
         'invisible': {
             bg: 'transparent',
@@ -512,6 +504,11 @@ function getNodeColor(type) {
             border: '#a01729',
             text: '#ffffff'
         },
+        'pole': {
+            bg: '#2c2c2c',
+            border: '#1a1a1a',
+            text: '#ffffff'
+        },
         'support': {
             bg: '#2c2c2c',
             border: '#1a1a1a',
@@ -523,6 +520,16 @@ function getNodeColor(type) {
             text: '#ffffff'
         }
     };
+
+    // Pour les pôles, utiliser le subtitle ou le title pour déterminer la couleur
+    if (type === 'pole') {
+        if (subtitle === 'Support' || title === 'Support' || subtitle === 'Finance') {
+            return colors.support;
+        } else if (subtitle === 'Opérationnel' || title === 'Opérationnel') {
+            return colors.operational;
+        }
+    }
+
     return colors[type] || colors.conseil;
 }
 
@@ -555,8 +562,8 @@ function update(source) {
         .attr('y', -45)
         .attr('rx', 10)
         .attr('ry', 10)
-        .style('fill', d => getNodeColor(d.data.type).bg)
-        .style('stroke', d => getNodeColor(d.data.type).border)
+        .style('fill', d => getNodeColor(d.data.type, d.data.subtitle, d.data.title).bg)
+        .style('stroke', d => getNodeColor(d.data.type, d.data.subtitle, d.data.title).border)
         .style('stroke-width', '3px')
         .style('filter', 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))')
         .style('cursor', 'pointer');
@@ -566,7 +573,7 @@ function update(source) {
         .attr('class', 'node-name')
         .attr('dy', '-10')
         .attr('text-anchor', 'middle')
-        .style('fill', d => getNodeColor(d.data.type).text)
+        .style('fill', d => getNodeColor(d.data.type, d.data.subtitle, d.data.title).text)
         .style('font-size', '16px')
         .style('font-weight', '700')
         .style('pointer-events', 'none')
@@ -577,7 +584,7 @@ function update(source) {
         .attr('class', 'node-responsible')
         .attr('dy', '15')
         .attr('text-anchor', 'middle')
-        .style('fill', d => getNodeColor(d.data.type).text)
+        .style('fill', d => getNodeColor(d.data.type, d.data.subtitle, d.data.title).text)
         .style('font-size', '11px')
         .style('font-weight', '500')
         .style('opacity', '0.9')
@@ -619,7 +626,7 @@ function update(source) {
         .style('opacity', 1);
 
     nodeUpdate.select('rect.node-rect')
-        .style('fill', d => getNodeColor(d.data.type).bg);
+        .style('fill', d => getNodeColor(d.data.type, d.data.subtitle, d.data.title).bg);
 
     // Effets hover et click
     nodeUpdate.select('rect')
@@ -682,6 +689,74 @@ function update(source) {
         })
         .style('opacity', 0)
         .remove();
+
+    // Dessiner le rectangle englobant "Conseil" autour du Directeur et tous les pôles
+    const conseilNodes = nodes.filter(d => d.data.type === 'pole' || d.data.type === 'directeur');
+
+    if (conseilNodes.length > 0) {
+        const topPadding = 70;
+        const minX = Math.min(...conseilNodes.map(d => d.x)) - 130;
+        const maxX = Math.max(...conseilNodes.map(d => d.x)) + 130;
+        const minY = Math.min(...conseilNodes.map(d => d.y)) - topPadding;
+        const maxY = Math.max(...conseilNodes.map(d => d.y)) + 70;
+
+        const boxWidth = maxX - minX;
+        const boxHeight = maxY - minY;
+
+        // Supprimer l'ancien rectangle s'il existe
+        g.selectAll('.conseil-box').remove();
+
+        // Créer le groupe pour le rectangle englobant (insérer avant les nœuds)
+        const conseilBox = g.insert('g', ':first-child')
+            .attr('class', 'conseil-box');
+
+        // Dessiner un rectangle de fond avec bordure rouge
+        conseilBox.append('rect')
+            .attr('x', minX)
+            .attr('y', minY)
+            .attr('width', boxWidth)
+            .attr('height', boxHeight)
+            .attr('rx', 15)
+            .attr('ry', 15)
+            .style('fill', 'rgba(196, 30, 58, 0.05)')
+            .style('stroke', '#c41e3a')
+            .style('stroke-width', '3px')
+            .style('opacity', 0)
+            .transition()
+            .duration(duration)
+            .style('opacity', 1);
+
+        // Ajouter le label "Conseil" à droite
+        const labelY = minY + 30;
+        const labelX = maxX - 180; // Positionner à droite avec un padding
+
+        conseilBox.append('text')
+            .attr('x', labelX)
+            .attr('y', labelY)
+            .attr('text-anchor', 'start')
+            .style('fill', '#c41e3a')
+            .style('font-size', '20px')
+            .style('font-weight', '700')
+            .style('opacity', 0)
+            .text("Conseil")
+            .transition()
+            .duration(duration)
+            .style('opacity', 1);
+
+        // Sous-titre
+        conseilBox.append('text')
+            .attr('x', labelX)
+            .attr('y', labelY + 18)
+            .attr('text-anchor', 'start')
+            .style('fill', '#c41e3a')
+            .style('font-size', '12px')
+            .style('font-weight', '500')
+            .style('opacity', 0)
+            .text("Responsables de pôles bénévoles")
+            .transition()
+            .duration(duration)
+            .style('opacity', 0.8);
+    }
 
     // Sauvegarde des anciennes positions
     nodes.forEach(d => {

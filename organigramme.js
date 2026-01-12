@@ -59,6 +59,22 @@ const polePerimeters = {
         ],
         processes: []
     },
+    "Directeur": {
+        responsible: "Rachid BOULSANE",
+        tasks: [
+            "Assure la direction opérationnelle de l'association",
+            "Coordonne l'ensemble des pôles et leurs activités",
+            "Met en œuvre les décisions du Conseil d'Administration",
+            "Représente l'association dans les relations extérieures",
+            "Supervise le bon fonctionnement quotidien de l'association",
+            "Anime le Conseil et facilite la prise de décision collective"
+        ],
+        processes: [
+            "Process de coordination inter-pôles",
+            "Process de reporting au Conseil d'Administration",
+            "Process de gestion des urgences opérationnelles"
+        ]
+    },
     "Conseil": {
         responsible: null,
         tasks: [
@@ -308,29 +324,29 @@ const treeData = {
     type: "ca",
     children: [
         {
-            name: "Président",
-            title: "Rachid BOULSANE",
-            responsible: "Rachid BOULSANE",
-            type: "ca-member"
-        },
-        {
             name: "Trésorier",
             title: "Shazad GHULAM",
             responsible: "Shazad GHULAM",
             type: "ca-member"
         },
         {
-            name: "Secrétaire",
-            title: "Umaran RANA",
-            responsible: "Umaran RANA",
-            type: "ca-member"
-        },
-        {
-            name: "Conseil",
-            title: "Responsables de pôles bénévoles",
-            subtitle: "Arbitrage / Priorisation",
-            type: "conseil",
+            name: "Président",
+            title: "Rachid BOULSANE",
+            responsible: "Rachid BOULSANE",
+            type: "ca-member",
             children: [
+                {
+                    name: "Directeur",
+                    title: "Direction Générale",
+                    responsible: "Rachid BOULSANE",
+                    type: "directeur",
+                    children: [
+                        {
+                            name: "Conseil",
+                            title: "Responsables de pôles bénévoles",
+                            subtitle: "Arbitrage / Priorisation",
+                            type: "conseil",
+                            children: [
         {
             name: "Pôle Logistique",
             title: "Support",
@@ -414,7 +430,17 @@ const treeData = {
             type: "operational",
             isNew: true
         }
+                            ]
+                        }
+                    ]
+                }
             ]
+        },
+        {
+            name: "Secrétaire",
+            title: "Umaran RANA",
+            responsible: "Umaran RANA",
+            type: "ca-member"
         }
     ]
 };
@@ -474,6 +500,11 @@ function getNodeColor(type) {
         'ca-member': {
             bg: '#2e7d4e',
             border: '#1a472a',
+            text: '#ffffff'
+        },
+        'directeur': {
+            bg: '#4a90e2',
+            border: '#2e5f8a',
             text: '#ffffff'
         },
         'conseil': {

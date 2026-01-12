@@ -303,10 +303,9 @@ const polePerimeters = {
 };
 
 // Données de l'organigramme
-// Note: nœud racine invisible pour avoir plusieurs branches au premier niveau
 const treeData = {
-    name: "",
-    type: "invisible",
+    name: "Conseil d'Administration",
+    type: "ca",
     children: [
         {
             name: "Président",
@@ -448,26 +447,6 @@ svg.call(zoomBehavior);
 
 const g = svg.append("g")
     .attr("transform", `translate(${Math.max(containerWidth, 2500)/2},${margin.top})`);
-
-// Définir le dégradé pour le rectangle du Conseil d'Administration
-const defs = svg.append("defs");
-
-const gradient = defs.append("linearGradient")
-    .attr("id", "ca-gradient")
-    .attr("x1", "0%")
-    .attr("y1", "0%")
-    .attr("x2", "0%")
-    .attr("y2", "100%");
-
-gradient.append("stop")
-    .attr("offset", "0%")
-    .style("stop-color", "#e8f5e9")
-    .style("stop-opacity", 0.3);
-
-gradient.append("stop")
-    .attr("offset", "100%")
-    .style("stop-color", "#c8e6c9")
-    .style("stop-opacity", 0.2);
 
 // Création du tree layout
 const tree = d3.tree()
@@ -653,13 +632,7 @@ function update(source) {
         .style('fill', 'none')
         .style('stroke', '#bdc3c7')
         .style('stroke-width', '3px')
-        .style('opacity', d => {
-            // Masquer les liens entre le nœud invisible et les membres du CA
-            if (d.parent && d.parent.data.type === 'invisible' && d.data.type === 'ca-member') {
-                return 0;
-            }
-            return 0;
-        });
+        .style('opacity', 0);
 
     // Transition pour les liens
     const linkUpdate = linkEnter.merge(link);
@@ -667,13 +640,7 @@ function update(source) {
     linkUpdate.transition()
         .duration(duration)
         .attr('d', d => diagonal(d, d.parent))
-        .style('opacity', d => {
-            // Masquer les liens entre le nœud invisible et les membres du CA
-            if (d.parent && d.parent.data.type === 'invisible' && d.data.type === 'ca-member') {
-                return 0;
-            }
-            return 0.6;
-        });
+        .style('opacity', 0.6);
 
     // Sortie des anciens liens
     link.exit().transition()
@@ -684,74 +651,6 @@ function update(source) {
         })
         .style('opacity', 0)
         .remove();
-
-    // Dessiner le rectangle englobant pour le Conseil d'Administration
-    const caMembers = nodes.filter(d => d.data.type === 'ca-member');
-
-    if (caMembers.length > 0) {
-        // Calculer les limites du rectangle englobant avec plus de padding
-        const topPadding = 70;
-        const minX = Math.min(...caMembers.map(d => d.x)) - 130;
-        const maxX = Math.max(...caMembers.map(d => d.x)) + 130;
-        const minY = Math.min(...caMembers.map(d => d.y)) - topPadding - 20;
-        const maxY = Math.max(...caMembers.map(d => d.y)) + 70;
-
-        const width = maxX - minX;
-        const height = maxY - minY;
-        const centerX = (minX + maxX) / 2;
-
-        // Supprimer l'ancien rectangle s'il existe
-        g.selectAll('.ca-box').remove();
-
-        // Créer le groupe pour le rectangle englobant (insérer avant les nœuds)
-        const caBox = g.insert('g', ':first-child')
-            .attr('class', 'ca-box');
-
-        // Dessiner un rectangle de fond avec dégradé subtil
-        caBox.append('rect')
-            .attr('x', minX)
-            .attr('y', minY)
-            .attr('width', width)
-            .attr('height', height)
-            .attr('rx', 15)
-            .attr('ry', 15)
-            .style('fill', 'url(#ca-gradient)')
-            .style('stroke', '#1a472a')
-            .style('stroke-width', '2px')
-            .style('opacity', 0)
-            .transition()
-            .duration(duration)
-            .style('opacity', 1);
-
-        // Ajouter le label "Conseil d'Administration" en haut du rectangle
-        const labelY = minY + 35;
-
-        caBox.append('text')
-            .attr('x', centerX)
-            .attr('y', labelY)
-            .attr('text-anchor', 'middle')
-            .style('fill', '#1a472a')
-            .style('font-size', '18px')
-            .style('font-weight', '700')
-            .style('opacity', 0)
-            .text("Conseil d'Administration")
-            .transition()
-            .duration(duration)
-            .style('opacity', 1);
-
-        // Ajouter une ligne de séparation sous le titre
-        caBox.append('line')
-            .attr('x1', minX + 30)
-            .attr('y1', labelY + 15)
-            .attr('x2', maxX - 30)
-            .attr('y2', labelY + 15)
-            .style('stroke', '#1a472a')
-            .style('stroke-width', '1px')
-            .style('opacity', 0)
-            .transition()
-            .duration(duration)
-            .style('opacity', 0.4);
-    }
 
     // Sauvegarde des anciennes positions
     nodes.forEach(d => {

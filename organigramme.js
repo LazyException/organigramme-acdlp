@@ -19,14 +19,10 @@ const polePerimeters = {
     "Président": {
         responsible: "Rachid BOULSANE",
         tasks: [
-            "Gérer la boîte contact@aucoeurdelaprecarite.com",
-            "Mobiliser des ressources en étant force de proposition pour obtenir les moyens humains et matériels afin d'atteindre les objectifs",
-            "Rechercher des financements (subventions, dons, politique marketing, voire prestations réalisées)",
-            "Suivre avec une grande rigueur la réalisation des budgets, superviser la comptabilité et les finances de l'association",
-            "Préparer et participer aux instances politiques de l'association (CA, AG…), assister le conseil d'administration",
-            "Point d'entrée des nouveaux projets avant de les déléguer aux responsables de pôles concernés",
-            "Gère tous les projets Internationaux",
-            "Le directeur doit fournir un rapport d'activité consolidé des différents pôles"
+            "Garant des valeurs de l'association",
+            "Le président représente l’association dans tous les actes de la vie civile : signature de contrats, représentation auprès des partenaires, banques, administrations, et en justice si nécessaire.",
+            "Il veille à l’exécution des décisions prises par l’Assemblée générale et le Conseil d’administration, coordonne l’action du bureau et garantit la cohérence entre la stratégie décidée et les actions menées.",
+            "Le président s’assure du respect des statuts, du règlement intérieur et de la loi, convoque et préside les réunions statutaires, et agit pour préserver l’intérêt général et la pérennité de l’association."
         ],
         processes: []
     },
@@ -320,8 +316,8 @@ const polePerimeters = {
 
 // Données de l'organigramme
 const treeData = {
-    name: "Conseil d'Administration",
-    type: "ca",
+    name: "",
+    type: "invisible",
     children: [
         {
             name: "Trésorier",
@@ -495,8 +491,8 @@ function getNodeColor(type, subtitle, title) {
             text: '#ffffff'
         },
         'directeur': {
-            bg: '#4a90e2',
-            border: '#2e5f8a',
+            bg: '#2c2c2c',
+            border: '#1a1a1a',
             text: '#ffffff'
         },
         'conseil': {
@@ -678,7 +674,13 @@ function update(source) {
     linkUpdate.transition()
         .duration(duration)
         .attr('d', d => diagonal(d, d.parent))
-        .style('opacity', 0.6);
+        .style('opacity', d => {
+            // Masquer les liens entre le nœud invisible et les membres du CA
+            if (d.parent && d.parent.data.type === 'invisible' && d.data.type === 'ca-member') {
+                return 0;
+            }
+            return 0.6;
+        });
 
     // Sortie des anciens liens
     link.exit().transition()
@@ -756,6 +758,60 @@ function update(source) {
             .transition()
             .duration(duration)
             .style('opacity', 0.8);
+    }
+
+    // Dessiner le rectangle englobant "Conseil d'Administration" autour des membres CA
+    const caMembers = nodes.filter(d => d.data.type === 'ca-member');
+
+    if (caMembers.length > 0) {
+        const topPadding = 90;
+        const minX = Math.min(...caMembers.map(d => d.x)) - 130;
+        const maxX = Math.max(...caMembers.map(d => d.x)) + 130;
+        const minY = Math.min(...caMembers.map(d => d.y)) - topPadding;
+        const maxY = Math.max(...caMembers.map(d => d.y)) + 70;
+
+        const boxWidth = maxX - minX;
+        const boxHeight = maxY - minY;
+        const centerX = (minX + maxX) / 2;
+
+        // Supprimer l'ancien rectangle s'il existe
+        g.selectAll('.ca-box').remove();
+
+        // Créer le groupe pour le rectangle englobant (insérer avant les nœuds)
+        const caBox = g.insert('g', ':first-child')
+            .attr('class', 'ca-box');
+
+        // Dessiner un rectangle de fond avec bordure verte
+        caBox.append('rect')
+            .attr('x', minX)
+            .attr('y', minY)
+            .attr('width', boxWidth)
+            .attr('height', boxHeight)
+            .attr('rx', 15)
+            .attr('ry', 15)
+            .style('fill', 'rgba(26, 71, 42, 0.05)')
+            .style('stroke', '#1a472a')
+            .style('stroke-width', '3px')
+            .style('opacity', 0)
+            .transition()
+            .duration(duration)
+            .style('opacity', 1);
+
+        // Ajouter le label "Conseil d'Administration" à l'intérieur en haut, centré
+        const labelY = minY + 35;
+
+        caBox.append('text')
+            .attr('x', centerX)
+            .attr('y', labelY)
+            .attr('text-anchor', 'middle')
+            .style('fill', '#1a472a')
+            .style('font-size', '22px')
+            .style('font-weight', '700')
+            .style('opacity', 0)
+            .text("Conseil d'Administration")
+            .transition()
+            .duration(duration)
+            .style('opacity', 1);
     }
 
     // Sauvegarde des anciennes positions

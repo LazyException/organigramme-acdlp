@@ -653,7 +653,13 @@ function update(source) {
         .style('fill', 'none')
         .style('stroke', '#bdc3c7')
         .style('stroke-width', '3px')
-        .style('opacity', 0);
+        .style('opacity', d => {
+            // Masquer les liens entre le nœud invisible et les membres du CA
+            if (d.parent && d.parent.data.type === 'invisible' && d.data.type === 'ca-member') {
+                return 0;
+            }
+            return 0;
+        });
 
     // Transition pour les liens
     const linkUpdate = linkEnter.merge(link);
@@ -661,7 +667,13 @@ function update(source) {
     linkUpdate.transition()
         .duration(duration)
         .attr('d', d => diagonal(d, d.parent))
-        .style('opacity', 0.6);
+        .style('opacity', d => {
+            // Masquer les liens entre le nœud invisible et les membres du CA
+            if (d.parent && d.parent.data.type === 'invisible' && d.data.type === 'ca-member') {
+                return 0;
+            }
+            return 0.6;
+        });
 
     // Sortie des anciens liens
     link.exit().transition()

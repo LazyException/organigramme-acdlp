@@ -1,5 +1,64 @@
 // Périmètres des pôles
 const polePerimeters = {
+    "Conseil d'Administration": {
+        responsible: null,
+        tasks: [
+            "Constitué du Président, du Trésorier et du Secrétaire",
+            "Définit la stratégie globale de l'association",
+            "Prend les décisions majeures concernant l'organisation",
+            "Veille au bon fonctionnement de l'association",
+            "Valide les orientations proposées par le Conseil"
+        ],
+        processes: [
+            "Process de convocation des réunions du CA",
+            "Process de prise de décision (vote, quorum)",
+            "Process de validation des budgets",
+            "Process de suivi des décisions prises"
+        ]
+    },
+    "Président": {
+        responsible: "Rachid BOULSANE",
+        tasks: [
+            "Gérer la boîte contact@aucoeurdelaprecarite.com",
+            "Mobiliser des ressources en étant force de proposition pour obtenir les moyens humains et matériels afin d'atteindre les objectifs",
+            "Rechercher des financements (subventions, dons, politique marketing, voire prestations réalisées)",
+            "Suivre avec une grande rigueur la réalisation des budgets, superviser la comptabilité et les finances de l'association",
+            "Préparer et participer aux instances politiques de l'association (CA, AG…), assister le conseil d'administration",
+            "Point d'entrée des nouveaux projets avant de les déléguer aux responsables de pôles concernés",
+            "Gère tous les projets Internationaux",
+            "Le directeur doit fournir un rapport d'activité consolidé des différents pôles"
+        ],
+        processes: []
+    },
+    "Trésorier": {
+        responsible: "Shazad GHULAM",
+        tasks: [
+            "Tenir la comptabilité de l'association",
+            "Gérer la trésorerie et superviser les flux financiers",
+            "Préparer et suivre le budget annuel",
+            "Établir les comptes annuels et le bilan financier",
+            "Présenter les rapports financiers au Conseil et à l'Assemblée Générale",
+            "Assurer la transparence financière auprès des membres et des donateurs",
+            "Veiller au respect des obligations légales et fiscales",
+            "Gérer les relations avec les banques et les organismes financiers"
+        ],
+        processes: []
+    },
+    "Secrétaire": {
+        responsible: "Umaran RANA",
+        tasks: [
+            "Rédiger et archiver les comptes rendus des réunions (CA, AG, bureau)",
+            "Gérer la correspondance officielle de l'association",
+            "Tenir à jour les registres obligatoires",
+            "Gérer les adhésions et la liste des membres",
+            "Convoquer les membres aux réunions statutaires",
+            "Préparer l'ordre du jour en lien avec le Président",
+            "Assurer le suivi des décisions prises",
+            "Veiller au respect des statuts et du règlement intérieur",
+            "Effectuer les démarches administratives et déclarations légales"
+        ],
+        processes: []
+    },
     "Conseil": {
         responsible: null,
         tasks: [
@@ -102,7 +161,11 @@ const polePerimeters = {
             "Animation pendant les réunions bénévoles",
             "Création groupe Whatsapp",
             "Document interne (contrat de travail)",
-            "Gestion des stagiaires"
+            "Gestion des stagiaires",
+            "Campagne de recrutement bénévoles (en lien avec le pôle communication)",
+            "Communication aux bénévoles",
+            "Suivi de l'intégration des bénévoles",
+            "Mise en place de référent pour accueillir les bénévoles"
         ],
         processes: [
             "Process d'identification du besoin",
@@ -241,11 +304,35 @@ const polePerimeters = {
 
 // Données de l'organigramme
 const treeData = {
-    name: "Conseil",
-    title: "Responsables de pôles bénévoles",
-    subtitle: "Arbitrage / Priorisation",
-    type: "conseil",
+    name: "Conseil d'Administration",
+    title: "Président, Trésorier, Secrétaire",
+    subtitle: "Gouvernance",
+    type: "ca",
     children: [
+        {
+            name: "Président",
+            title: "Rachid BOULSANE",
+            responsible: "Rachid BOULSANE",
+            type: "ca-member"
+        },
+        {
+            name: "Trésorier",
+            title: "Shazad GHULAM",
+            responsible: "Shazad GHULAM",
+            type: "ca-member"
+        },
+        {
+            name: "Secrétaire",
+            title: "Umaran RANA",
+            responsible: "Umaran RANA",
+            type: "ca-member"
+        },
+        {
+            name: "Conseil",
+            title: "Responsables de pôles bénévoles",
+            subtitle: "Arbitrage / Priorisation",
+            type: "conseil",
+            children: [
         {
             name: "Pôle Logistique",
             title: "Support",
@@ -329,6 +416,8 @@ const treeData = {
             type: "operational",
             isNew: true
         }
+            ]
+        }
     ]
 };
 
@@ -374,6 +463,21 @@ root.y0 = 0;
 // Fonction pour obtenir la couleur selon le type
 function getNodeColor(type) {
     const colors = {
+        'invisible': {
+            bg: 'transparent',
+            border: 'transparent',
+            text: 'transparent'
+        },
+        'ca': {
+            bg: '#1a472a',
+            border: '#0d2416',
+            text: '#ffffff'
+        },
+        'ca-member': {
+            bg: '#2e7d4e',
+            border: '#1a472a',
+            text: '#ffffff'
+        },
         'conseil': {
             bg: '#c41e3a',
             border: '#a01729',

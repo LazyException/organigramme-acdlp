@@ -80,7 +80,6 @@ const polePerimeters = {
         tasks: [
             "Newsletter",
             "Gestion des réseaux sociaux",
-            "Relation avec les associations pour la cantine",
             "Infos maraudes",
             "Document de présentation de l'association",
             "Vidéo pour ACDLP",
@@ -130,6 +129,20 @@ const polePerimeters = {
         ],
         processes: [
             "Questionnaire Préparatoire SI"
+        ]
+    },
+    "Pôle Collecte": {
+        responsible: "Yassine MELHAF (Interim)",
+        tasks: [
+            "Démarchage de magasin partenaire",
+            "Planification des jours de collecte",
+            "Gestion des bénévoles",
+            "Conditionnement et Rapatriement des denrées sur le lieu de stockage",
+            "Mise en relation avec le Pôle Alimentaire pour les besoins, le Pôle Logistique pour les véhicules et le Pôle Communication pour les supports (flyers, kakemono)"
+        ],
+        processes: [
+            "Comment démarcher un magasin partenaire ?",
+            "Comment conditionner les denrées ?"
         ]
     },
     "Pôle Production": {
@@ -190,7 +203,7 @@ const polePerimeters = {
         responsible: "Yassine FATHI",
         tasks: [
             "Distribution de vêtements",
-            "Gestion du stock vestimentaire",
+            "Gestion du stock vestimentaire / hygiène",
             "Collaboration vestimentaire cantine"
         ],
         processes: [
@@ -272,6 +285,13 @@ const treeData = {
             subtitle: "Support",
             responsible: "Rachid BOULSANE (Interim)",
             type: "support",
+            isNew: true
+        },
+        {
+            name: "Pôle Collecte",
+            title: "Opérationnel",
+            responsible: "Yassine MELHAF (Interim)",
+            type: "operational",
             isNew: true
         },
         {

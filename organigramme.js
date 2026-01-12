@@ -10,8 +10,7 @@ const polePerimeters = {
             "Process de remontée des sujets au Conseil",
             "Process de priorisation des décisions",
             "Process de validation (majorité / quorum)",
-            "Process de décision urgente (hors réunion mensuelle)",
-            "Process de communication des décisions aux pôles"
+            "Process de décision urgente (hors réunion mensuelle)"
         ]
     },
     "Pôle Logistique": {
@@ -116,6 +115,21 @@ const polePerimeters = {
             "Process de validation",
             "Process de mise à jour du planning",
             "Process de gestion des absences urgentes"
+        ]
+    },
+    "Pôle DSI": {
+        responsible: "Rachid BOULSANE (Interim)",
+        tasks: [
+            "Administration du site internet",
+            "Administration du Mailjet",
+            "Administration des outils externes (Myamana)",
+            "Administration de la cantine, suivi du véhicule, ouverture de portail, modification des quantités",
+            "Administration de l'hébergeur et des noms de domaines",
+            "Administration des boites mail",
+            "Administration de l'Intranet"
+        ],
+        processes: [
+            "Questionnaire Préparatoire SI"
         ]
     },
     "Pôle Production": {
@@ -251,6 +265,14 @@ const treeData = {
             subtitle: "Support",
             responsible: "Umaran RANA (Interim)",
             type: "support"
+        },
+        {
+            name: "Pôle DSI",
+            title: "Système d'Information",
+            subtitle: "Support",
+            responsible: "Rachid BOULSANE (Interim)",
+            type: "support",
+            isNew: true
         },
         {
             name: "Pôle Production",

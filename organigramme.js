@@ -128,7 +128,7 @@ const polePerimeters = {
         ]
     },
     "Pôle Zakat": {
-        responsible: "Rachid BOULSANE (Interim)",
+        responsible: "Vacant",
         tasks: [
             "Prévient les dérives de collecte de Zakat",
             "Veille pour trouver des leviers de dépenses de Zakat",
@@ -207,7 +207,7 @@ const polePerimeters = {
         ]
     },
     "Pôle Collecte": {
-        responsible: "Yassine MELHAF (Interim)",
+        responsible: "Vacant",
         tasks: [
             "Démarchage de magasin partenaire",
             "Planification des jours de collecte",
@@ -353,7 +353,7 @@ const treeData = {
                         {
                             name: "Pôle Zakat",
                             title: "Support",
-                            responsible: "Rachid BOULSANE (Interim)",
+                            responsible: "Vacant",
                             type: "pole",
                             isNew: true
                         },
@@ -367,21 +367,21 @@ const treeData = {
                             name: "Pôle RH",
                             title: "Ressources Humaines",
                             subtitle: "Support",
-                            responsible: "Umaran RANA (Interim)",
+                            responsible: "Umaran RANA",
                             type: "pole"
                         },
                         {
                             name: "Pôle DSI",
                             title: "Système d'Information",
                             subtitle: "Support",
-                            responsible: "Rachid BOULSANE (Interim)",
+                            responsible: "Vacant",
                             type: "pole",
                             isNew: true
                         },
                         {
                             name: "Pôle Collecte",
                             title: "Opérationnel",
-                            responsible: "Yassine MELHAF (Interim)",
+                            responsible: "Vacant",
                             type: "pole",
                             isNew: true
                         },
@@ -397,7 +397,7 @@ const treeData = {
                             name: "Pôle Maraudes",
                             title: "13 équipes",
                             subtitle: "Opérationnel",
-                            responsible: "Rachid BOULSANE (Interim)",
+                            responsible: "Vacant",
                             type: "pole",
                             isNew: true
                         },
@@ -416,7 +416,7 @@ const treeData = {
                         {
                             name: "Pôle Inter Asso",
                             title: "Opérationnel",
-                            responsible: "Bilal DESTOUCHES (Interim)",
+                            responsible: "Vacant",
                             type: "pole",
                             isNew: true
                         }

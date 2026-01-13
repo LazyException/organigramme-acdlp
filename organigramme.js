@@ -311,6 +311,13 @@ const polePerimeters = {
             "Process d'évaluation du partenariat",
             "Process de renouvellement ou arrêt"
         ]
+    },
+    "Pôle Enfance": {
+        responsible: "Ali ISAVUDEEN",
+        tasks: [
+            "Organisation de la distribution de fournitures scolaires"
+        ],
+        processes: []
     }
 };
 
@@ -419,6 +426,13 @@ const treeData = {
                             responsible: "Bilal DESTOUCHES",
                             type: "pole",
                             isNew: true
+                        },
+                        {
+                            name: "Pôle Enfance",
+                            title: "Opérationnel",
+                            responsible: "Ali ISAVUDEEN",
+                            type: "pole",
+                            isNew: true
                         }
                     ]
                 }
@@ -437,7 +451,7 @@ const treeData = {
 const container = document.getElementById("organigramme");
 const containerWidth = container.clientWidth;
 const margin = { top: 60, right: 20, bottom: 50, left: 20 };
-const width = Math.max(containerWidth - margin.left - margin.right, 2500); // Largeur minimum de 2500px
+const width = Math.max(containerWidth - margin.left - margin.right, 3500); // Largeur minimum de 3500px
 const height = 600 - margin.top - margin.bottom;
 
 let i = 0;
@@ -448,7 +462,7 @@ const svg = d3.select("#organigramme")
     .append("svg")
     .attr("width", "100%")
     .attr("height", 600)
-    .attr("viewBox", `0 0 ${Math.max(containerWidth, 2500)} 600`);
+    .attr("viewBox", `0 0 ${Math.max(containerWidth, 3500)} 600`);
 
 // Ajout du zoom
 const zoomBehavior = d3.zoom()
@@ -460,12 +474,12 @@ const zoomBehavior = d3.zoom()
 svg.call(zoomBehavior);
 
 const g = svg.append("g")
-    .attr("transform", `translate(${Math.max(containerWidth, 2500)/2},${margin.top})`);
+    .attr("transform", `translate(${Math.max(containerWidth, 3500)/2},${margin.top})`);
 
 // Création du tree layout
 const tree = d3.tree()
     .size([width, height])
-    .separation((a, b) => (a.parent === b.parent ? 3 : 4));
+    .separation((a, b) => (a.parent === b.parent ? 4 : 5));
 
 // Création de la hiérarchie
 const root = d3.hierarchy(treeData);

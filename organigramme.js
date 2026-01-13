@@ -318,6 +318,54 @@ const polePerimeters = {
             "Organisation de la distribution de fournitures scolaires"
         ],
         processes: []
+    },
+    "Responsable de Site": {
+        responsible: "Latifa FATINI",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1K6bNURtH5P9S5vSe0IKKGf52KtHNLJA7tS8jnm81s2U/edit?usp=sharing"
+    },
+    "Agent Polyvalent": {
+        responsible: "Abdoulkarim TOUNKARA",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1neYpPWTlV8JL36mzZknHSXUvTrdVGRsxktf6nLuHi10/edit?usp=drive_link"
+    },
+    "Chef": {
+        responsible: "Bambi",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1J9y2_VD_6peCM3T7IlPHqdpB22A-Ftfx/edit?usp=sharing&ouid=107183891003366853323&rtpof=true&sd=true"
+    },
+    "Sous-chef": {
+        responsible: "Khadijatou",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1J9y2_VD_6peCM3T7IlPHqdpB22A-Ftfx/edit?usp=sharing&ouid=107183891003366853323&rtpof=true&sd=true"
+    },
+    "Second de cuisine": {
+        responsible: "Yasin",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1iqtaDmU-xA-ejCFAtc3oqLjeTCwaqJMy/edit?usp=drive_link&ouid=107183891003366853323&rtpof=true&sd=true"
+    },
+    "Commis 1": {
+        responsible: "Arouna",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1CaJtYxPrz--0OEf8eSbIDamE8aTPjgupaBjYPjokWHg/edit?usp=drive_link"
+    },
+    "Commis 2": {
+        responsible: "Kenzo",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1CaJtYxPrz--0OEf8eSbIDamE8aTPjgupaBjYPjokWHg/edit?usp=drive_link"
+    },
+    "Commis 3": {
+        responsible: "À définir",
+        tasks: [],
+        processes: [],
+        fichPoste: "https://docs.google.com/document/d/1CaJtYxPrz--0OEf8eSbIDamE8aTPjgupaBjYPjokWHg/edit?usp=drive_link"
     }
 };
 
@@ -398,7 +446,63 @@ const treeData = {
                             subtitle: "Opérationnel",
                             responsible: "Yassine MELHAF",
                             type: "pole",
-                            isNew: true
+                            isNew: true,
+                            children: [
+                                {
+                                    name: "Responsable de Site",
+                                    title: "Site",
+                                    responsible: "Latifa FATINI",
+                                    type: "subteam"
+                                },
+                                {
+                                    name: "Agent Polyvalent",
+                                    title: "Support",
+                                    responsible: "Abdoulkarim TOUNKARA",
+                                    type: "subteam"
+                                },
+                                {
+                                    name: "Chef",
+                                    title: "Cuisine",
+                                    responsible: "Bambi",
+                                    type: "subteam",
+                                    children: [
+                                        {
+                                            name: "Sous-chef",
+                                            title: "Cuisine",
+                                            responsible: "Khadijatou",
+                                            type: "subteam",
+                                            children: [
+                                                {
+                                                    name: "Second de cuisine",
+                                                    title: "Cuisine",
+                                                    responsible: "Yasin",
+                                                    type: "subteam",
+                                                    children: [
+                                                        {
+                                                            name: "Commis 1",
+                                                            title: "Cuisine",
+                                                            responsible: "Arouna",
+                                                            type: "subteam"
+                                                        },
+                                                        {
+                                                            name: "Commis 2",
+                                                            title: "Alternant",
+                                                            responsible: "Kenzo",
+                                                            type: "subteam"
+                                                        },
+                                                        {
+                                                            name: "Commis 3",
+                                                            title: "Cuisine",
+                                                            responsible: "À définir",
+                                                            type: "subteam"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             name: "Pôle Maraudes",
@@ -527,6 +631,11 @@ function getNodeColor(type, subtitle, title) {
         'operational': {
             bg: '#c41e3a',
             border: '#a01729',
+            text: '#ffffff'
+        },
+        'subteam': {
+            bg: '#5a6268',
+            border: '#3d4247',
             text: '#ffffff'
         }
     };
@@ -894,6 +1003,18 @@ function openPanel(poleName) {
                     <i class="fas fa-user"></i>
                     ${perimeter.responsible}
                 </div>
+            </div>
+        `;
+    }
+
+    // Fiche de poste link
+    if (perimeter.fichPoste) {
+        html += `
+            <div class="panel-section">
+                <h3><i class="fas fa-file-alt"></i> Fiche de poste</h3>
+                <a href="${perimeter.fichPoste}" target="_blank" class="fiche-poste-link">
+                    <i class="fas fa-external-link-alt"></i> Consulter la fiche de poste
+                </a>
             </div>
         `;
     }

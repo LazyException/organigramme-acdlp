@@ -353,7 +353,7 @@ const treeData = {
                         {
                             name: "Pôle Zakat",
                             title: "Support",
-                            responsible: "Vacant",
+                            responsible: "Umaran RANA",
                             type: "pole",
                             isNew: true
                         },
@@ -374,14 +374,14 @@ const treeData = {
                             name: "Pôle DSI",
                             title: "Système d'Information",
                             subtitle: "Support",
-                            responsible: "Vacant",
+                            responsible: "Rachid BOULSANE",
                             type: "pole",
                             isNew: true
                         },
                         {
                             name: "Pôle Collecte",
                             title: "Opérationnel",
-                            responsible: "Vacant",
+                            responsible: "Yassine MELHAF",
                             type: "pole",
                             isNew: true
                         },
@@ -397,7 +397,7 @@ const treeData = {
                             name: "Pôle Maraudes",
                             title: "13 équipes",
                             subtitle: "Opérationnel",
-                            responsible: "Vacant",
+                            responsible: "Yassine MELHAF",
                             type: "pole",
                             isNew: true
                         },
@@ -416,7 +416,7 @@ const treeData = {
                         {
                             name: "Pôle Inter Asso",
                             title: "Opérationnel",
-                            responsible: "Vacant",
+                            responsible: "Bilal DESTOUCHES",
                             type: "pole",
                             isNew: true
                         }

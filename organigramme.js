@@ -214,7 +214,8 @@ const polePerimeters = {
         responsible: "Rachid BOULSANE (Interim)",
         tasks: [
             "Assure la Communication Interne avec toutes les équipes de maraudes",
-            "Se met en lien avec le Pôle production pour assurer l'approvisionnement des maraudes"
+            "Se met en lien avec le Pôle production pour assurer l'approvisionnement des maraudes",
+            "S'assurer du bon fonctionnement des maraudes (réunions avec les responsable, contrôle de maraudes...", 
         ],
         processes: [
             "Process de planification des maraudes",

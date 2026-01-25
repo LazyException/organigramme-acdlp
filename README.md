@@ -12,7 +12,7 @@ Un organigramme interactif créé avec D3.js et déployé via Docker Compose.
 - **Pôle Production Alimentaire** - Type Opérationnel
 - **Pôle Maraudes** - Type Opérationnel (13 équipes)
 - **Pôle Social** - Type Opérationnel
-- **Pôle Trésorerie** (Finance) - Type Support
+- **Pôle Comptabilité** (Finance) - Type Support
 - **Pôle Vestimentaire** - Type Opérationnel
 
 ## Fonctionnalités

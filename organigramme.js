@@ -35,7 +35,7 @@ const polePerimeters = {
             "Établir les comptes annuels et le bilan financier",
             "Présenter les rapports financiers au Conseil et à l'Assemblée Générale",
             "Assurer la transparence financière auprès des membres et des donateurs",
-            "Veiller au respect des obligations légales et fiscales",
+            "Veiller au respect des obligations comptables",
             "Gérer les relations avec les banques et les organismes financiers"
         ],
         processes: []
@@ -44,14 +44,6 @@ const polePerimeters = {
         responsible: "Umaran RANA",
         tasks: [
             "Rédiger et archiver les comptes rendus des réunions (CA, AG, bureau)",
-            "Gérer la correspondance officielle de l'association",
-            "Tenir à jour les registres obligatoires",
-            "Gérer les adhésions et la liste des membres",
-            "Convoquer les membres aux réunions statutaires",
-            "Préparer l'ordre du jour en lien avec le Président",
-            "Assurer le suivi des décisions prises",
-            "Veiller au respect des statuts et du règlement intérieur",
-            "Effectuer les démarches administratives et déclarations légales"
         ],
         processes: []
     },
@@ -63,7 +55,8 @@ const polePerimeters = {
             "Met en œuvre les décisions du Conseil d'Administration",
             "Représente l'association dans les relations extérieures",
             "Supervise le bon fonctionnement quotidien de l'association",
-            "Anime le Conseil et facilite la prise de décision collective"
+            "Anime le Conseil et facilite la prise de décision collective",
+            "Création groupe Whatsapp"
         ],
         processes: [
             "Process de coordination inter-pôles",
@@ -109,7 +102,7 @@ const polePerimeters = {
             "Process d'évaluation du prestataire"
         ]
     },
-    "Pôle Trésorerie": {
+    "Pôle Comptabilité": {
         responsible: "Shazad GHULAM",
         tasks: [
             "MyAmana Trésorerie",
@@ -117,7 +110,8 @@ const polePerimeters = {
             "Gestion de l'espèce",
             "Paiement fournisseurs",
             "Paiement salaire",
-            "Achat internet"
+            "Achat internet",
+            "Relation donateur"
         ],
         processes: [
             "Process de demande de paiement",
@@ -125,25 +119,6 @@ const polePerimeters = {
             "Process de contrôle des justificatifs",
             "Process d'exécution du paiement",
             "Process d'archivage comptable"
-        ]
-    },
-    "Pôle Zakat": {
-        responsible: "Vacant",
-        tasks: [
-            "Prévient les dérives de collecte de Zakat",
-            "Veille pour trouver des leviers de dépenses de Zakat",
-            "Pilote le Comité Zakat",
-            "Traite les demandes de Zakat émanant des différents Pôles Opérationnels",
-            "Se met en lien avec le Pôle Trésorerie pour veiller à la séparation des biens",
-            "Se met en lien avec le Référent religieux pour les cas problématiques"
-        ],
-        processes: [
-            "Process de dépôt de demande de Zakat",
-            "Process d'analyse d'éligibilité",
-            "Process de validation (commission / référents)",
-            "Process de versement de la Zakat",
-            "Process de suivi post-attribution",
-            "Process de confidentialité et protection des données"
         ]
     },
     "Pôle Communication": {
@@ -156,8 +131,7 @@ const polePerimeters = {
             "Vidéo pour ACDLP",
             "Shooting photo ACDLP",
             "Gestion des campagnes",
-            "Gestion site internet",
-            "Relation donateur"
+            "Gestion site internet"
         ],
         processes: [
             "Process de proposition de contenu",
@@ -171,13 +145,10 @@ const polePerimeters = {
         responsible: "Umaran RANA (Interim)",
         tasks: [
             "Animation pendant les réunions bénévoles",
-            "Création groupe Whatsapp",
             "Document interne (contrat de travail)",
-            "Gestion des stagiaires",
             "Campagne de recrutement bénévoles (en lien avec le pôle communication)",
             "Communication aux bénévoles",
-            "Suivi de l'intégration des bénévoles",
-            "Mise en place de référent pour accueillir les bénévoles"
+            "Suivi de l'intégration des bénévoles"
         ],
         processes: [
             "Process d'identification du besoin",
@@ -261,7 +232,13 @@ const polePerimeters = {
             "Gestion Mise à l'hôtel",
             "Suivi épicerie",
             "Suivi des familles",
-            "Aide financière"
+            "Aide financière",
+            "Prévient les dérives de collecte de Zakat",
+            "Veille pour trouver des leviers de dépenses de Zakat",
+            "Pilote le Comité Zakat",
+            "Traite les demandes de Zakat émanant des différents Pôles Opérationnels",
+            "Se met en lien avec le Pôle Comptabilité pour veiller à la séparation des biens",
+            "Se met en lien avec le Référent religieux pour les cas problématiques"
         ],
         processes: [
             "Process d'accueil d'une nouvelle famille",
@@ -271,7 +248,13 @@ const polePerimeters = {
             "Process de réévaluation de la situation",
             "Process de sortie de dispositif",
             "Process de coordination avec Zakat / Vestimentaire / Hébergement",
-            "Process de confidentialité"
+            "Process de confidentialité",
+            "Process de dépôt de demande de Zakat",
+            "Process d'analyse d'éligibilité",
+            "Process de validation (commission / référents)",
+            "Process de versement de la Zakat",
+            "Process de suivi post-attribution",
+            "Process de confidentialité et protection des données"
         ]
     },
     "Pôle Vestimentaire": {
@@ -399,18 +382,11 @@ const treeData = {
                             type: "pole"
                         },
                         {
-                            name: "Pôle Trésorerie",
+                            name: "Pôle Comptabilité",
                             title: "Finance",
                             subtitle: "Support",
                             responsible: "Shazad GHULAM",
                             type: "pole"
-                        },
-                        {
-                            name: "Pôle Zakat",
-                            title: "Support",
-                            responsible: "Umaran RANA",
-                            type: "pole",
-                            isNew: true
                         },
                         {
                             name: "Pôle Communication",

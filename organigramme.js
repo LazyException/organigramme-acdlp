@@ -52,11 +52,12 @@ const polePerimeters = {
         tasks: [
             "Assure la direction opérationnelle de l'association",
             "Coordonne l'ensemble des pôles et leurs activités",
-            "Met en œuvre les décisions du Conseil d'Administration",
+            "Met en œuvre les décisions du Conseil d'execution",
             "Représente l'association dans les relations extérieures",
             "Supervise le bon fonctionnement quotidien de l'association",
             "Anime le Conseil et facilite la prise de décision collective",
-            "Création groupe Whatsapp"
+            "Création groupe Whatsapp",
+            "Contrôle la conformité administrative de chaque pôle",
         ],
         processes: [
             "Process de coordination inter-pôles",
@@ -177,27 +178,14 @@ const polePerimeters = {
             "Questionnaire Préparatoire SI"
         ]
     },
-    "Pôle Collecte": {
-        responsible: "Vacant",
-        tasks: [
-            "Démarchage de magasin partenaire",
-            "Planification des jours de collecte",
-            "Gestion des bénévoles",
-            "Conditionnement et Rapatriement des denrées sur le lieu de stockage",
-            "Mise en relation avec le Pôle Alimentaire pour les besoins, le Pôle Logistique pour les véhicules et le Pôle Communication pour les supports (flyers, kakemono)"
-        ],
-        processes: [
-            "Comment démarcher un magasin partenaire ?",
-            "Comment conditionner les denrées ?"
-        ]
-    },
     "Pôle Production": {
         responsible: "Yassine MELHAF",
         tasks: [
             "Ramasse Production",
             "Achat des denrées",
             "Achat des denrées inter Assos",
-            "Gestion des salariés"
+            "Gestion des salariés",
+            "Gestion des collectes (pex ex Rungis, magasins, autre..."
         ],
         processes: [
             "Process de planification des repas",
@@ -407,13 +395,6 @@ const treeData = {
                             title: "Système d'Information",
                             subtitle: "Support",
                             responsible: "Rachid BOULSANE",
-                            type: "pole",
-                            isNew: true
-                        },
-                        {
-                            name: "Pôle Collecte",
-                            title: "Opérationnel",
-                            responsible: "Yassine MELHAF",
                             type: "pole",
                             isNew: true
                         },
